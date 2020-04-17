@@ -23,17 +23,28 @@ export class AppComponent {
 
   constructor(private todoDataService: TodoDataService) {}
 
+
+  // Now NGRX - Property
   public addTodo(): void {
     this.todoDataService.addTodo(this.newTodo);
-    this.newTodo = new Todo();
+    // this.newTodo = new Todo();
   }
 
-  public toggleTodoComplete(todo): void {
-    this.todoDataService.toggleTodoComplete(todo);
-  }
+  // Handle this by NGRX
 
-  public removeTodo(todo): void {
-    this.todoDataService.deleteTodoById(todo.id);
+  // public toggleTodoComplete(todo): void {
+  //   this.todoDataService.toggleTodoComplete(todo);
+  // }
+
+  // public removeTodo(todo): void {
+  //   this.todoDataService.deleteTodoById(todo.id);
+  // }
+
+  public toggleTodoComplete({ id }): void {
+    this.todoDataService.toggleTodoComplete(id);
+  }
+  public removeTodo({ id }): void {
+    this.todoDataService.deleteTodoById(id);
   }
 
   public allTodos(): number {
@@ -46,4 +57,6 @@ export class AppComponent {
   public get completeTodos(): Array<Todo> {
     return this.todoDataService.getCompleteTodos();
   }
+
+  
 }
