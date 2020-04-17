@@ -10,7 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { StoreModule } from '@ngrx/store';
-import { todos } from './redux/reducer';
+import { todoReducers } from './redux/reducer';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { todos } from './redux/reducer';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,MatInputModule,MatToolbarModule,MatButtonModule,MatCheckboxModule,
-    StoreModule.forRoot({todos})
+    BrowserAnimationsModule, MatInputModule, MatToolbarModule, MatButtonModule, MatCheckboxModule,
+    StoreModule.forRoot({todoReducers})
   ],
   providers: [],
   bootstrap: [AppComponent]

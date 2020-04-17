@@ -1,9 +1,12 @@
 
 // NGRX Reducer
 
-export const todos = (state = [], action) => {
+export const todoReducers = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
+      console.log('ADD TODO');
+      console.log(...state, action.payload);
+      // debugger;
       return [...state, action.payload];
 
     case 'REMOVE_TODO':
@@ -20,6 +23,8 @@ export const todos = (state = [], action) => {
       });
 
     default:
-      return state;
+      console.log('default state');
+      console.log(...state, action.payload);
+      return [...state];
   }
 };

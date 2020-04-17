@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Todo } from './todo';
 import { Store } from '@ngrx/store';
+import { todoReducers } from './redux/reducer';
 
 @Injectable()
 export class TodoDataService {
-  public lastId: number = 0;
-  public todos: Todo[] = [];
+  public lastId = 0;
 
+  public totalTodoList: Todo[] = [];
+
+  // tslint:disable-next-line: variable-name
   constructor( private _store: Store<any>) {
-    _store.select('todos').subscribe(d=>{
-      this.todos=d;
-    })
+
+    _store.select('todoReducers').subscribe(d => {
+      // console.log(d);
+      this.totalTodoList = d;
+    });
+
   }
 
-  //NGRX's-Property
+  // NGRX's-Property
   public addTodo(todo: Todo): void {
     this._store.dispatch({
+
       type: 'ADD_TODO',
       payload: {
         id: ++this.lastId,
@@ -25,7 +32,7 @@ export class TodoDataService {
     });
   }
 
-  //Local's - Property
+  // Local's - Property
 
   // Simulate POST /todos
   // public addTodo(todo: Todo): TodoDataService {
@@ -43,7 +50,7 @@ export class TodoDataService {
   // }
 
 
-  //NGRX's-Property
+  // NGRX's-Property
   public deleteTodoById(todoId: number): void {
     this._store.dispatch({
       type: 'REMOVE_TODO',
@@ -53,7 +60,7 @@ export class TodoDataService {
 
 
   // Local's Property
-  
+
   // public toggleTodoComplete(todo: Todo) {
   //   let updatedTodo = this._updateTodoById(todo.id, {
   //     complete: !todo.complete
@@ -61,7 +68,7 @@ export class TodoDataService {
   //   return updatedTodo;
   // }
 
-  //NGRX's-Property
+  // NGRX's-Property
   public toggleTodoComplete(todoId: number): void {
     this._store.dispatch({
       type: 'TOGGLE_COMPLETE',
@@ -70,11 +77,11 @@ export class TodoDataService {
   }
 
   public getCompleteTodos(): Todo[] {
-    return this.todos.filter(todo => todo.complete === true);
+    return this.totalTodoList.filter(todo => todo.complete === true);
   }
 
   public getIncompleteTodos(): Todo[] {
-    return this.todos.filter(todo => todo.complete === false);
+    return this.totalTodoList.filter(todo => todo.complete === false);
   }
 
 
