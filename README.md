@@ -1,6 +1,10 @@
-# TodoNgrx
+# Todo-Ngrx
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+
+## Layout Design
+![Screenshot_38](https://user-images.githubusercontent.com/37630292/79559062-ef023280-80c6-11ea-85a0-528a75688753.jpg)
+
 
 ## Development server
 
