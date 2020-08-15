@@ -20,13 +20,15 @@ import { TodoDataService } from './todo-data.service';
 })
 export class AppComponent {
   newTodo: Todo = new Todo();
-
+ 
   constructor(private todoDataService: TodoDataService) {}
 
 
   // Now NGRX - Property
   public addTodo(): void {
+
     this.todoDataService.addTodo(this.newTodo);
+    this.newTodo = new Todo();
     // this.newTodo = new Todo();
   }
 
