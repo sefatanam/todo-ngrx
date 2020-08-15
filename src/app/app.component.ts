@@ -19,9 +19,11 @@ import { TodoDataService } from './todo-data.service';
   providers: [TodoDataService]
 })
 export class AppComponent {
+  [x: string]: any;
   newTodo: Todo = new Todo();
- 
-  constructor(private todoDataService: TodoDataService) {}
+
+  constructor(private todoDataService: TodoDataService) { }
+  title: string;
 
 
   // Now NGRX - Property
